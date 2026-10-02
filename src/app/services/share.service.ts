@@ -10,3 +10,12 @@ compartirTexto() {
     text="Compartir texto"
     (tap)="compartirTexto()">
 </Button>
+
+compartirImagen(rutaImagen: string) {
+
+    SocialShare.shareImage(
+        rutaImagen,
+        'Compartir fotografía'
+    );
+
+}
