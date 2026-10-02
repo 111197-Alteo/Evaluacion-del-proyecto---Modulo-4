@@ -1,20 +1,32 @@
-export function reducer(
-    state: AppState,
-    action: any
-): AppState {
+describe('Favoritos Reducer', () => {
 
-    switch (action.type) {
+    it('debe agregar un favorito', () => {
 
-        case 'AGREGAR_FAVORITO':
-            return {
-                ...state,
-                favoritos: [
-                    ...state.favoritos,
-                    action.payload
-                ]
-            };
+        const estadoInicial = {
+            favoritos: []
+        };
 
-        default:
-            return state;
-    }
-}
+        const articulo = {
+            id: 1,
+            titulo: 'Artículo de prueba'
+        };
+
+        const nuevoEstado = reducer(
+            estadoInicial,
+            {
+                type: 'AGREGAR_FAVORITO',
+                payload: articulo
+            }
+        );
+
+        expect(
+            nuevoEstado.favoritos.length
+        ).toBe(1);
+
+        expect(
+            nuevoEstado.favoritos[0]
+        ).toEqual(articulo);
+
+    });
+
+});
